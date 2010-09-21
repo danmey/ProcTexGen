@@ -1,0 +1,9 @@
+(= dis_perl (perlin))
+(= col_const (flat c:0.13))
+
+(= tex (distort
+      (trans (glow) sx:10 sy:10)
+      dis_perl dis_perl))
+
+(= out (hsv col_const tex tex ))
+!

@@ -1,0 +1,24 @@
+(= clouds1 (perlin m:0))
+
+(= clouds2 (trans sx:0.3 
+		 (|< (blur (pix n:680) r:2 n:80))))
+
+(= clouds (* clouds1 clouds2))
+
+(= enltment (glow yr:0.005 xr:0.1 atten:19))
+
+(= only_clouds (hsv (flat c:0.7) clouds clouds))
+(= circle (msk (glow) t:0.2))
+(= circle2 (trans circle ty:30 sx:1))
+(= neg-circle2 (msk circle2 (flat) m:1))
+(= neg-half-circle (mix neg-circle2 circle))
+(= half-circle2 (msk neg-half-circle (flat) m:1))
+(= half-circle-rot (trans half-circle2 tx:-30 a:0.47))
+(= moon (|< (blur half-circle-rot)))
+(= stars (pix n:100))
+(= stars2 (|< (blur r:4 n:2 stars m:1)))
+(= stars3 (|< (blur r:4 n:2 stars m:2)))
+(= stars4 (|< (blur r:1 n:30 stars)))
+(= stars-moon (mix stars4 moon))
+(= stars-moon3 (rgb stars-moon stars-moon stars-moon))
+(= final (alpha3 only_clouds stars-moon3 clouds))

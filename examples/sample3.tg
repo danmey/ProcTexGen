@@ -1,0 +1,8 @@
+(= bg  (|< (light (perlin persistence:1.33))))
+
+(= between (light (|< (blur r:2 n:1 (brick w:80)))))
+
+(= rough (|< (blur n:2 (alpha bg between between))))
+
+(= final (hsv (flat c:0.077) rough rough s:0.9))
+!

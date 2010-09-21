@@ -1,0 +1,3 @@
+(= one_quad (trans a:0.05 (flat x:28 y:28 w:200 h:200))
+!
+(= one (trans sx:8 sy:8 

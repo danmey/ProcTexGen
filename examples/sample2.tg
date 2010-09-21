@@ -1,0 +1,19 @@
+(= clouds1 (perlin m:0))
+
+(= clouds2 (trans sx:0.3 
+		 (|< (blur (pix n:680) r:2 n:80))))
+
+(= clouds (* clouds1 clouds2))
+
+(= enltment (glow yr:0.005 xr:0.1 atten:19))
+
+(= only_clouds (hsv (flat c:0.7) clouds clouds))
+
+(= only_enltment (hsv (flat c:0.2) enltment enltment v:0.8))
+
+(= final (+3 only_clouds
+	       (alpha3 only_clouds only_enltment only_clouds)))
+
+
+
+
